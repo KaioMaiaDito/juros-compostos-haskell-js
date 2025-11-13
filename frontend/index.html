@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Frontend Juros Compostos</title>
+  </head>
+  <body>
+    <h1>Frontend em JavaScript (Simulando JSON)</h1>
+
+    <script>
+      // 1. JSON de solicitacao (request) que SERIA enviado ao Haskell
+      const requestJson = {
+        principal: 1000.0,
+        rate: 0.1,
+        periods: 12.0,
+      };
+
+      console.log('JSON de requisicao que seria enviado para o Haskell:');
+      console.log(JSON.stringify(requestJson));
+
+      // 2. Suponha que o Haskell executou com esses valores e imprimiu:
+      // {"futureValue": 3138.428376721004, "totalInterest": 2138.428376721004}
+      // Vamos simular esse JSON de resposta aqui:
+      const responseJsonString =
+        '{"futureValue": 3138.428376721004, "totalInterest": 2138.428376721004}';
+
+      // 3. JavaScript consumindo o JSON de resposta
+      const responseJson = JSON.parse(responseJsonString);
+
+      console.log('JSON de resposta vindo do Haskell:');
+      console.log(responseJson);
+
+      console.log(
+        'Valor futuro (formatado):',
+        responseJson.futureValue.toFixed(2)
+      );
+      console.log(
+        'Juros totais (formatado):',
+        responseJson.totalInterest.toFixed(2)
+      );
+    </script>
+  </body>
+</html>
